@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CryptoValueService, RootObject } from '../providers/crypto-value.service';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +8,15 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  crypto:RootObject[];
 
+  constructor(public api: CryptoValueService) {}
+
+  async ngOnInit() {
+    
+    const data:RootObject[] = (await this.api.getCrypto());
+    this.crypto = data;
+    
+  }
 }
+

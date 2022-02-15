@@ -1,17 +1,41 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-item lines="none">
+      <a href="">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </a>
+      <ion-label style="margin-left: 25%;">
+        Binance <span style="color: #f1ce50; font-size: 80%;"> Lite</span>
+      </ion-label>
+      <a style="margin-right: 5%;" href="">
+        <ion-icon name="search-outline"></ion-icon>
+      </a>
+      <a href="">
+        <ion-icon name="qr-code-outline"></ion-icon>
+      </a>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-list>
+    <ion-item lines="none" *ngFor='let item of crypto'>
+      <ion-avatar slot="start">
+        <img [src]="item.image.large">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{item.symbol | uppercase}}</h2>
+        <ion-note>
+          <h3>{{item.id | titlecase}}</h3>
+        </ion-note>
+      </ion-label>
+      <ion-label slot="end" style="text-align: end;">
+        <h2>{{item.market_data.current_price.usd}} $</h2>
+        <h5 [ngStyle]="{'color' : item.market_data.price_change_percentage_24h > 0 ? 'green' : 'red' }">
+          <span
+            *ngIf="item.market_data.price_change_percentage_24h > 0">+</span>{{item.market_data.price_change_percentage_24h}}
+        </h5>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
