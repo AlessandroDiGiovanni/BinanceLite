@@ -25,6 +25,10 @@ const routes: Routes = [
   {
     path: 'buy-crypto/buy/:symbol',
     loadChildren: () => import('./buy/buy.module').then( m => m.BuyPageModule)
+  },
+  {
+    path: 'search',
+    loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
   }
 ];
 @NgModule({

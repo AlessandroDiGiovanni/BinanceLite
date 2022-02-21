@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { BuyCryptoPageRoutingModule } from './buy-crypto-routing.module';
+import { SearchPageRoutingModule } from './search-routing.module';
 
-import { BuyCryptoPage } from './buy-crypto.page';
+import { SearchPage } from './search.page';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
@@ -14,8 +14,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     CommonModule,
     FormsModule,
     IonicModule,
-    BuyCryptoPageRoutingModule,Ng2SearchPipeModule
+    SearchPageRoutingModule,Ng2SearchPipeModule
   ],
-  declarations: [BuyCryptoPage]
+  declarations: [SearchPage]
 })
-export class BuyCryptoPageModule {}
+export class SearchPageModule {}

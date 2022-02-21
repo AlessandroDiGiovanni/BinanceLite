@@ -8,7 +8,7 @@
     </ion-item>
     <ion-row>
       <ion-col>
-        <ion-searchbar  placeholder="Cerca"></ion-searchbar>
+        <ion-searchbar [(ngModel)]="term"  placeholder="Cerca"></ion-searchbar>
       </ion-col>
     </ion-row>
   </ion-toolbar>
@@ -23,7 +23,7 @@
   </ion-note>
 </ion-item-divider>
 
-      <ion-item [routerLink]="['buy/'+item.symbol]" lines="none" *ngFor='let item of crypto'>
+      <ion-item [routerLink]="['buy/'+item.symbol]" lines="none" *ngFor='let item of crypto | filter:term'>
           <img [src]="item.image.thumb">
         <ion-label style="margin-left: 3%;">
           {{item.symbol | uppercase}}

@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { SellCryptoPageRoutingModule } from './sell-crypto-routing.module';
 
 import { SellCryptoPage } from './sell-crypto.page';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SellCryptoPageRoutingModule
+    SellCryptoPageRoutingModule, Ng2SearchPipeModule
   ],
   declarations: [SellCryptoPage]
 })
