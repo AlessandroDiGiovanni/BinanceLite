@@ -10,16 +10,15 @@
 
       <ion-icon name="search-outline" [routerLink]="['/search']"></ion-icon>
 
-      <a href="">
-        <ion-icon name="qr-code-outline"></ion-icon>
-      </a>
+    
     </ion-item>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <h4 style="margin-left: 3%;">Mercati</h4>
   <ion-list>
-    <ion-item lines="none" *ngFor='let item of crypto'>
+    <ion-item lines="" *ngFor='let item of crypto'>
       <ion-avatar slot="start">
         <img [src]="item.image.large">
       </ion-avatar>
