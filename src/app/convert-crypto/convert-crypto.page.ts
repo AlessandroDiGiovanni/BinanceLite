@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CryptoValueService } from '../providers/crypto-value.service';
+import { CryptoValueService, RootObject } from '../providers/crypto-value.service';
 
 @Component({
   selector: 'app-convert-crypto',
@@ -8,19 +8,13 @@ import { CryptoValueService } from '../providers/crypto-value.service';
 })
 export class ConvertCryptoPage implements OnInit {
 
-  crypto ;
+  crypto:RootObject[];
+  visibility = true;
 
   constructor(public api: CryptoValueService) {}
 
-  
-   visibility = true;
-  
-  async ngOnInit() {
-    
-    const data = (await this.api.getCrypto());
-    this.crypto = data;
-    
+  async ngOnInit() {  
+    const data:RootObject[] = (await this.api.getCrypto());
+    this.crypto = data; 
   }
-
-  
 }

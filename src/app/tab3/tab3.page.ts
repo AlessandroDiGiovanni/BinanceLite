@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { CryptoValueService } from '../providers/crypto-value.service';
+import { CryptoValueService, RootObject } from '../providers/crypto-value.service';
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
@@ -9,40 +9,30 @@ Chart.register(...registerables);
   styleUrls: ['tab3.page.scss']
 })
 
- 
 export class Tab3Page {
 
   visibility = true;
   visibility1 = true;
-  crypto;
+  crypto: RootObject[];
 
   nameCrypto = [];
-
-  
-  frollo=['frollo1','frollo2']
+  frollo = ['frollo1', 'frollo2']
 
   constructor(public api: CryptoValueService) { }
 
   async ngOnInit() {
 
-    const data = await this.api.getCrypto();
+    const data: RootObject[] = await this.api.getCrypto();
     this.crypto = data;
-    
-    this.nameCrypto = await this.crypto.map((item)=>item.symbol)
+    this.nameCrypto = await this.crypto.map((item) => item.symbol)
     console.log(this.nameCrypto)
-    
-  
     this.createBarChart();
-        
   }
 
   @ViewChild('barChart') barChart;
 
   bars: any;
   colorArray: any;
-  
-
- 
 
   createBarChart() {
     console.log(this.nameCrypto);
@@ -52,7 +42,7 @@ export class Tab3Page {
         labels: this.nameCrypto,
         datasets: [{
           label: '# of Votes',
-          data: [50,26,80,65],
+          data: [50, 26, 80, 65],
           backgroundColor: [
             'rgba(255, 159, 64, 0.2)',
             'rgba(255, 99, 132, 0.2)',

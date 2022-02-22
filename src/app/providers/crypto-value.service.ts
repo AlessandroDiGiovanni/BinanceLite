@@ -1115,10 +1115,8 @@ export class CryptoValueService {
 
   constructor( private httpClient: HttpClient) { }  
   
-  getCrypto(){
-    return this.httpClient.get<RootObject[]>('https://api.coingecko.com/api/v3/coins').toPromise();
-
-  }
+  getCrypto = () => this.httpClient.get<RootObject[]>('https://api.coingecko.com/api/v3/coins').toPromise();
+  
 }
 
   

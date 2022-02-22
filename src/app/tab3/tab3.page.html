@@ -23,7 +23,6 @@
     </ng-template>
     <ion-icon name="information-circle-outline"></ion-icon>
   </div>
-
   <ion-row style="padding: 4%;text-align: center;">
     <ion-col style="padding: 4%;">
       <img src="" alt="">
@@ -60,29 +59,27 @@
         <p style="font-size: x-small; margin-right: 1%; margin-left: 2%;">Nascondi i saldi a zero</p>
       </div>
     </ion-card-header>
-    
-      <ion-card-content style="padding:0">
-        <ion-list>
-          <ion-item lines="none" *ngFor='let item of crypto'>
-              <img [src]="item.image.thumb">
-            <ion-label style="margin-left:5%;">
-              <h4>{{item.symbol | uppercase}}</h4>
-              <ion-note>
-                <h6>{{item.id | titlecase}}</h6>
-              </ion-note>
-            </ion-label>
-            <ion-label *ngIf="visibility else pattern" slot="end" style="text-align: end;">
-              <!-- <h4 >{{item.market_data.current_price.usd}} $</h4> -->
-              <h4>0 $</h4>
-              <!-- <h5 [ngStyle]="{'color' : item.market_data.price_change_percentage_24h > 0 ? 'green' : 'red' }">
+
+    <ion-card-content style="padding:0">
+      <ion-list>
+        <ion-item lines="none" *ngFor='let item of crypto'>
+          <img [src]="item.image.thumb">
+          <ion-label style="margin-left:5%;">
+            <h4>{{item.symbol | uppercase}}</h4>
+            <ion-note>
+              <h6>{{item.id | titlecase}}</h6>
+            </ion-note>
+          </ion-label>
+          <ion-label *ngIf="visibility else pattern" slot="end" style="text-align: end;">
+            <!-- <h4 >{{item.market_data.current_price.usd}} $</h4> -->
+            <h4>0 $</h4>
+            <!-- <h5 [ngStyle]="{'color' : item.market_data.price_change_percentage_24h > 0 ? 'green' : 'red' }">
                 <span
                   *ngIf="item.market_data.price_change_percentage_24h > 0">+</span>{{item.market_data.price_change_percentage_24h}}
               </h5> -->
-            </ion-label>
-          </ion-item>
-        </ion-list>
+          </ion-label>
+        </ion-item>
+      </ion-list>
     </ion-card-content>
   </ion-card>
-
-
 </ion-content>
