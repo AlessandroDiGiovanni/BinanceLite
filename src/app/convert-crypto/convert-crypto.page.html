@@ -4,9 +4,7 @@
       <a href="tabs/tab1">
         <ion-icon name="arrow-back-outline"></ion-icon>
       </a>
-      <ion-label style="margin-left: 30%;">
-        Converti
-      </ion-label>
+      <ion-label style="margin-left: 30%"> Converti </ion-label>
     </ion-item>
   </ion-toolbar>
 </ion-header>
@@ -15,7 +13,7 @@
   <ion-item>
     <!-- <ion-avatar> -->
 
-      <!-- <ion-select interface="action-sheet" >
+    <!-- <ion-select interface="action-sheet" >
       <ion-select-option  *ngFor='let item of crypto' value="item.symbol">
         <ion-avatar>
           <img [src]="item.image.small">
@@ -29,37 +27,40 @@
       </ion-select-option>
       
     </ion-select> -->
-      <ion-item>
-
+    <ion-item>
       <ion-select interface="action-sheet" placeholder="--">
-        <ion-select-option (click)="visibility = !visibility" *ngFor='let item of crypto' [value]="item.symbol">
+        <ion-select-option
+          (click)="visibility = !visibility"
+          *ngFor="let item of crypto"
+          [value]="item.symbol"
+        >
           {{item.symbol | uppercase}}
           <!-- <ion-item *ngIf="visibility" > {{item.id | titlecase}} </ion-item> -->
         </ion-select-option>
       </ion-select>
-  </ion-item>
+    </ion-item>
 
-  
-  <ion-input placeholder="0-100,000" type="number"></ion-input>
-  <ion-label style="color: #f1ce50;">Massimo</ion-label>
+    <ion-input placeholder="0-100,000" type="number"></ion-input>
+    <ion-label style="color: #f1ce50">Massimo</ion-label>
   </ion-item>
-  <p style="margin-top: 1%;">Disponibile :
+  <p style="margin-top: 1%">
+    Disponibile :
     <!-- {{}} -->
   </p>
-  <p style="margin-top: 10%;">A</p>
+  <p style="margin-top: 10%">A</p>
   <ion-item>
     <ion-item>
       <ion-select interface="action-sheet" placeholder="--">
-        <ion-select-option *ngFor='let item of crypto' [value]="item.symbol">
+        <ion-select-option *ngFor="let item of crypto" [value]="item.symbol">
           {{item.symbol | uppercase}}
           <!-- <ion-item *ngIf="visibility" > {{item.id | titlecase}} </ion-item> -->
         </ion-select-option>
       </ion-select>
-  </ion-item>
+    </ion-item>
     <ion-input placeholder="--" type="number"></ion-input>
   </ion-item>
 </ion-content>
 
-<ion-toolbar style="padding-bottom: 5%; text-align: center;">
+<ion-toolbar style="padding-bottom: 5%; text-align: center">
   <ion-button size="small">Anteprima della conversione</ion-button>
 </ion-toolbar>

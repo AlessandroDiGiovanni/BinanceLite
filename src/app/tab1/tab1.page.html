@@ -4,8 +4,8 @@
       <ion-menu-button>
         <ion-icon name="person-circle-outline"></ion-icon>
       </ion-menu-button>
-      <ion-label style="margin-left: 15%;">
-        Binance <span style="color: #f1ce50; font-size: 80%;"> Lite</span>
+      <ion-label style="margin-left: 15%">
+        Binance <span style="color: #f1ce50; font-size: 80%"> Lite</span>
       </ion-label>
       <ion-icon name="search-outline" [routerLink]="['/search']"></ion-icon>
     </ion-item>
@@ -13,11 +13,26 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <h4 style="margin-left: 3%;">Mercati</h4>
+  <h4 style="margin-left: 3%">Mercati</h4>
+
+  <ion-refresher
+    style="z-index: 2"
+    slot="fixed"
+    (ionRefresh)="doRefresh($event)"
+  >
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing..."
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+
   <ion-list>
-    <ion-item lines="" *ngFor='let item of crypto'>
+    <ion-item lines="" *ngFor="let item of cryptoScroll">
       <ion-avatar slot="start">
-        <img [src]="item.image.large">
+        <img [src]="item.image.large" />
       </ion-avatar>
       <ion-label>
         <h2>{{item.symbol | uppercase}}</h2>
@@ -25,13 +40,22 @@
           <h3>{{item.id | titlecase}}</h3>
         </ion-note>
       </ion-label>
-      <ion-label slot="end" style="text-align: end;">
+      <ion-label slot="end" style="text-align: end">
         <h2>{{item.market_data.current_price.usd}} $</h2>
-        <h5 [ngStyle]="{'color' : item.market_data.price_change_percentage_24h > 0 ? 'green' : 'red' }">
-          <span
-            *ngIf="item.market_data.price_change_percentage_24h > 0">+</span>{{item.market_data.price_change_percentage_24h}}
+        <h5
+          [ngStyle]="{'color' : item.market_data.price_change_percentage_24h > 0 ? 'green' : 'red' }"
+        >
+          <span *ngIf="item.market_data.price_change_percentage_24h > 0">+</span
+          >{{item.market_data.price_change_percentage_24h}} %
         </h5>
       </ion-label>
     </ion-item>
   </ion-list>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data..."
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

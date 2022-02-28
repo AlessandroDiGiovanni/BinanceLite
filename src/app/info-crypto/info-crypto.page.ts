@@ -8,30 +8,20 @@ import { CryptoValueService, RootObject } from '../providers/crypto-value.servic
   styleUrls: ['./info-crypto.page.scss'],
 })
 export class InfoCryptoPage implements OnInit {
-
   sub: any;
   value: string;
-  crypto:RootObject[];
-  valueusd:number[];
-  img: string[];
+  crypto: RootObject;
 
-  constructor(private route: ActivatedRoute, public api: CryptoValueService) { }
-  
+  constructor(private route: ActivatedRoute, public api: CryptoValueService) {}
 
   async ngOnInit() {
-
-    this.sub = this.route.params.subscribe(params => {
+    this.sub = this.route.params.subscribe((params) => {
       this.value = params['name'];
-    })
+    });
 
-    const data:RootObject[] = (await this.api.getCrypto()).filter(item =>item.name==this.value);
+    const data: RootObject = (await this.api.getCrypto()).find(
+      (item) => item.name == this.value
+    );
     this.crypto = data;
-    this.valueusd = this.crypto.map(item => item.market_data.current_price.usd);
-    this.img = this.crypto.map(item => item.image.thumb)
-    console.log(this.img)
-    console.log(this.valueusd)
-    console.log(this.value)
-
   }
-
 }

@@ -4,7 +4,7 @@
       <a href="tabs/tab1">
         <ion-icon name="arrow-back-outline"></ion-icon>
       </a>
-      <ion-label style="margin-left: 13%;">
+      <ion-label style="margin-left: 13%">
         <p>Scegli la Criptovaluta</p>
       </ion-label>
     </ion-item>
@@ -18,12 +18,11 @@
 
 <ion-content>
   <ion-list>
-
-    <ion-item lines="none" *ngFor='let item of crypto | filter:term'>
-      <img [src]="item.image.thumb">
-      <ion-label style="margin-left: 3%;">
+    <ion-item lines="none" *ngFor="let item of crypto | filter:term">
+      <img [src]="item.image.thumb" />
+      <ion-label style="margin-left: 3%">
         {{item.symbol | uppercase}}
-        <ion-note style="font-size: x-small;">
+        <ion-note style="font-size: x-small">
           {{item.id | titlecase}}
         </ion-note>
       </ion-label>

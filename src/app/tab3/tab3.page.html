@@ -1,39 +1,47 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-label style="text-align: center;">
+    <ion-label style="text-align: center">
       <p>Portafoglio</p>
     </ion-label>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div style="display: flex; align-items: center;">
-    <p style="font-size: x-small; margin-right: 1%; margin-left: 2%;">Saldo totale </p>
+  <div style="display: flex; align-items: center">
+    <p style="font-size: x-small; margin-right: 1%; margin-left: 2%">
+      Saldo totale
+    </p>
     <a (click)="visibility =! visibility">
-      <ion-icon *ngIf="visibility else pattern_eye" cl name="eye-outline"></ion-icon>
+      <ion-icon
+        *ngIf="visibility else pattern_eye"
+        cl
+        name="eye-outline"
+      ></ion-icon>
       <ng-template #pattern_eye>
         <ion-icon name="eye-off"></ion-icon>
       </ng-template>
     </a>
   </div>
-  <div style="display: flex; align-items: center;">
-    <h1 *ngIf="visibility else pattern" style="margin: 0 2% 0 2%;">12345... $</h1>
+  <div style="display: flex; align-items: center">
+    <h1 *ngIf="visibility else pattern" style="margin: 0 2% 0 2%">
+      12345... $
+    </h1>
     <ng-template #pattern>
-      <h1 style="margin: 0 2% 0 2%;">*****</h1>
+      <h1 style="margin: 0 2% 0 2%">*****</h1>
     </ng-template>
     <ion-icon name="information-circle-outline"></ion-icon>
   </div>
-  <ion-row style="padding: 4%;text-align: center;">
-    <ion-col style="padding: 4%;">
-      <img src="" alt="">
+  <ion-row style="padding: 4%; text-align: center">
+    <ion-col style="padding: 4%">
+      <img src="" alt="" />
       <p>Deposita</p>
     </ion-col>
-    <ion-col style="padding: 4%;">
-      <img src="" alt="">
+    <ion-col style="padding: 4%">
+      <img src="" alt="" />
       <p>Prelievo</p>
     </ion-col>
-    <ion-col style="padding: 4%;">
-      <img src="" alt="">
+    <ion-col style="padding: 4%">
+      <img src="" alt="" />
       <p>Earn</p>
     </ion-col>
   </ion-row>
@@ -49,28 +57,38 @@
   <ion-card class="welcome-card">
     <ion-card-header>
       <ion-card-subtitle>Asset</ion-card-subtitle>
-      <div style="display: flex; align-items: center;">
+      <div style="display: flex; align-items: center">
         <a (click)="visibility1 =! visibility1">
-          <ion-icon *ngIf="visibility1 else pattern_check" cl name="checkmark-circle-outline"></ion-icon>
+          <ion-icon
+            *ngIf="visibility1 else pattern_check"
+            cl
+            name="checkmark-circle-outline"
+          ></ion-icon>
           <ng-template #pattern_check>
             <ion-icon name="checkmark-circle"></ion-icon>
           </ng-template>
         </a>
-        <p style="font-size: x-small; margin-right: 1%; margin-left: 2%;">Nascondi i saldi a zero</p>
+        <p style="font-size: x-small; margin-right: 1%; margin-left: 2%">
+          Nascondi i saldi a zero
+        </p>
       </div>
     </ion-card-header>
 
-    <ion-card-content style="padding:0">
+    <ion-card-content style="padding: 0">
       <ion-list>
-        <ion-item lines="none" *ngFor='let item of crypto'>
-          <img [src]="item.image.thumb">
-          <ion-label style="margin-left:5%;">
+        <ion-item lines="none" *ngFor="let item of crypto">
+          <img [src]="item.image.thumb" />
+          <ion-label style="margin-left: 5%">
             <h4>{{item.symbol | uppercase}}</h4>
             <ion-note>
               <h6>{{item.id | titlecase}}</h6>
             </ion-note>
           </ion-label>
-          <ion-label *ngIf="visibility else pattern" slot="end" style="text-align: end;">
+          <ion-label
+            *ngIf="visibility else pattern"
+            slot="end"
+            style="text-align: end"
+          >
             <!-- <h4 >{{item.market_data.current_price.usd}} $</h4> -->
             <h4>0 $</h4>
             <!-- <h5 [ngStyle]="{'color' : item.market_data.price_change_percentage_24h > 0 ? 'green' : 'red' }">

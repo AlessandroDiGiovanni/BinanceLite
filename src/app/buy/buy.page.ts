@@ -11,10 +11,7 @@ export class BuyPage implements OnInit {
   
   sub: any;
   value: string;
-  crypto:RootObject[];
-  valueusd:number[];
-  img: string[];
-
+  crypto:RootObject;
   constructor(private route: ActivatedRoute, public api: CryptoValueService) { }
   
 
@@ -24,14 +21,12 @@ export class BuyPage implements OnInit {
       this.value = params['symbol'];
     })
 
-    const data:RootObject[] = (await this.api.getCrypto()).filter(item =>item.symbol==this.value);
+    const data: RootObject = (await this.api.getCrypto()).find(
+      (item) => item.symbol == this.value
+    );
     this.crypto = data;
-    this.valueusd = this.crypto.map(item => item.market_data.current_price.usd);
-    this.img = this.crypto.map(item => item.image.thumb)
-    console.log(this.img)
-    console.log(this.valueusd)
-    console.log(this.value)
+  }
 
   }
 
-}
+

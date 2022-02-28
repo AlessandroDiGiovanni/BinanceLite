@@ -7,15 +7,12 @@ import { CryptoValueService, RootObject } from '../providers/crypto-value.servic
   styleUrls: ['./search.page.scss'],
 })
 export class SearchPage implements OnInit {
-
-  crypto:RootObject[];
+  crypto: RootObject[];
 
   constructor(public api: CryptoValueService) {}
 
   async ngOnInit() {
-    
-    const data:RootObject[] = (await this.api.getCrypto());
+    const data: RootObject[] = await this.api.getCrypto();
     this.crypto = data;
   }
-
 }

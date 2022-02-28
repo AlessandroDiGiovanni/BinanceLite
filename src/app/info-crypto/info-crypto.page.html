@@ -12,6 +12,6 @@
 </ion-header>
 <ion-content>
   <div lines="none" style="display: flex; font-size: small; align-items: center; justify-content: center;">
-    <img [src]="img">
-    <p style="margin-left: 2%;">1 {{value | uppercase }} ≈ {{valueusd}} $</p>
+    <img [src]="crypto?.image.thumb">
+    <p style="margin-left: 2%;">1 {{value | uppercase }} ≈ {{crypto?.market_data.current_price.usd}} $</p>
   </div>
