@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-item lines="none">
-      <a href="buy-crypto">
+      <a [routerLink]="['/buy-crypto']">
         <ion-icon name="arrow-back-outline"></ion-icon>
       </a>
       <ion-label style="margin-left: 30%;">
@@ -13,11 +13,11 @@
 <ion-content>
   <div lines="none" style="display: flex; font-size: small; align-items: center; justify-content: center;">
     <img [src]="crypto?.image.thumb">
-    <p style="margin-left: 2%;">1 {{value | uppercase }} ≈ {{crypto?.market_data.current_price.usd}} $</p>
+    <p style="margin-left: 2%;">1 {{ param | uppercase }} ≈ {{crypto?.market_data.current_price.usd}} $</p>
   </div>
 
   <ion-item style="justify-content: space-around;">
-    <ion-input placeholder="0" type="number"></ion-input>
+    <ion-input type="text" inputmode="numeric" [(ngModel)]="currentvalue"></ion-input>
     <ion-label position="fixed">USD</ion-label>
   </ion-item>
   <p style="font-size: x-small; text-align: center;">100,00 - 10.000,00 USD</p>
@@ -25,5 +25,5 @@
 </ion-content>
 
 <ion-toolbar style="padding-bottom: 5%;text-align: center;">
-  <ion-button>BUY</ion-button>
+  <ion-button (click)="buyCrypto()"type="submit">BUY</ion-button>
 </ion-toolbar>

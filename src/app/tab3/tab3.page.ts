@@ -1,7 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import {
   CryptoValueService,
   RootObject,
+  MyCripto,
 } from '../providers/crypto-value.service';
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
@@ -13,37 +14,46 @@ Chart.register(...registerables);
 })
 export class Tab3Page {
   visibility = true;
-  visibility1 = true;
+
   crypto: RootObject[];
+  sum: number = 0;
 
   nameCrypto = [];
-  frollo = ['frollo1', 'frollo2'];
+  valueCrypto = [];
+
+  @ViewChild('doughnutCanvas') private doughnutCanvas: ElementRef;
+
+  doughnutChart: any;
+  colorArray: any;
 
   constructor(public api: CryptoValueService) {}
 
-  async ngOnInit() {
-    const data: RootObject[] = await this.api.getCrypto();
-    this.crypto = data;
-    this.nameCrypto = await this.crypto.map((item) => item.symbol);
-    console.log(this.nameCrypto);
-    this.createBarChart();
+  async ngOnInit() {}
+
+  ngAfterViewInit() {
+    this.doughnutChartMethod();
   }
 
-  @ViewChild('barChart') barChart;
+  ionViewWillEnter() {
+    this.sum = this.api.Cryptos.map((item) => item.value).reduce(
+      (accumulator, current) => +accumulator + +current,
+      0
+    );
+    this.nameCrypto = this.api.Cryptos.map((item) => item.name);
+    this.valueCrypto = this.api.Cryptos.map((item) => item.valueinCrypto);
+    this.doughnutChart.destroy();
+    this.doughnutChartMethod();
+  }
 
-  bars: any;
-  colorArray: any;
-
-  createBarChart() {
-    console.log(this.nameCrypto);
-    this.bars = new Chart(this.barChart.nativeElement, {
+  doughnutChartMethod() {
+    this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
       type: 'doughnut',
       data: {
         labels: this.nameCrypto,
         datasets: [
           {
-            label: '# of Votes',
-            data: [50, 26, 80, 65],
+            label: '# of coins',
+            data: this.valueCrypto,
             backgroundColor: [
               'rgba(255, 159, 64, 0.2)',
               'rgba(255, 99, 132, 0.2)',

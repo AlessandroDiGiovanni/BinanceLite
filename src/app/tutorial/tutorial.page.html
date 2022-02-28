@@ -41,8 +41,8 @@
       <div class="slide">
         <img src=" assets/icon/monete.jpeg/" />
         <h2>Sei Pronto a Comprare Crypto-Monete?</h2>
-        <ion-button [routerLink]="['/login']"
-          >Andiamo! <ion-icon slot="end" name="arrow-forward"></ion-icon
+        <ion-button (click)='tutorialIsShowed()' 
+          >Andiamo! <ion-icon  slot="end" name="arrow-forward"></ion-icon
         ></ion-button>
       </div>
     </ion-slide>

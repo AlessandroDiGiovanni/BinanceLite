@@ -1105,10 +1105,21 @@ export interface RootObject {
   localization: Localization;
 }
 
+export interface MyCripto {
+  name: string;
+  symbol :string;
+  value: number;
+  valueinCrypto :number;
+  image: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class CryptoValueService {
+
+  Cryptos:MyCripto[] = [];
+
   constructor(private httpClient: HttpClient) {}
 
   getCrypto = () =>

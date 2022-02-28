@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CryptoValueService, RootObject } from '../providers/crypto-value.service';
+import { CryptoValueService, RootObject, MyCripto } from '../providers/crypto-value.service';
+import { Storage } from '@ionic/storage-angular';
+
 
 @Component({
   selector: 'app-buy',
@@ -12,7 +14,10 @@ export class BuyPage implements OnInit {
   sub: any;
   value: string;
   crypto:RootObject;
-  constructor(private route: ActivatedRoute, public api: CryptoValueService) { }
+
+  currentvalue: number = 0;
+
+  constructor(private route: ActivatedRoute, public api: CryptoValueService, private storage: Storage) { }
   
 
   async ngOnInit() {
@@ -27,6 +32,37 @@ export class BuyPage implements OnInit {
     this.crypto = data;
   }
 
+  buyCrypto(){
+    const currentCrypto:MyCripto = {
+      name:this.crypto.name,
+      value:this.currentvalue,
+      valueinCrypto:(this.currentvalue/this.crypto.market_data.current_price.usd),
+      symbol:this.value,
+      image: this.crypto.image.thumb,
+  
+    }
+    
+    let check = this.api.Cryptos.find(item => item.name==this.crypto.name);
+    if (!check) {
+      this.api.Cryptos.push(currentCrypto);
+      console.log(this.api.Cryptos)
+      
+    } else {
+      let i:number = this.api.Cryptos.findIndex(item => item.name==this.crypto.name)
+      console.log("elemento presente e in posizione:" + i);
+      this.api.Cryptos[i].value= +this.api.Cryptos[i].value+ +this.currentvalue;
+      this.api.Cryptos[i].valueinCrypto = this.api.Cryptos[i].value/this.crypto.market_data.current_price.usd;
+      console.log(this.api.Cryptos)
+
+  }
+
+    check:null;
+  
+    
+
+  
+
+  }  
   }
 
 
