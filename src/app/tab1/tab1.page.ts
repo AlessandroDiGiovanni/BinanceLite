@@ -48,6 +48,6 @@ export class Tab1Page implements OnInit {
       if (this.cryptoScroll.length == this.crypto.length) {
         event.target.disabled = true;
       }
-    }, 1000);
+    }, 700);
   }
 }

@@ -1107,9 +1107,9 @@ export interface RootObject {
 
 export interface MyCripto {
   name: string;
-  symbol :string;
+  symbol: string;
   value: number;
-  valueinCrypto :number;
+  valueinCrypto: number;
   image: string;
 }
 
@@ -1117,8 +1117,7 @@ export interface MyCripto {
   providedIn: 'root',
 })
 export class CryptoValueService {
-
-  Cryptos:MyCripto[] = [];
+  Cryptos: MyCripto[] = [];
 
   constructor(private httpClient: HttpClient) {}
 

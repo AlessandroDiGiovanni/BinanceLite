@@ -5,6 +5,7 @@ import {
   MyCripto,
 } from '../providers/crypto-value.service';
 import { Chart, registerables } from 'chart.js';
+
 Chart.register(...registerables);
 
 @Component({

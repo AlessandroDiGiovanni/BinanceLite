@@ -1,16 +1,17 @@
 <ion-header>
   <ion-toolbar>
     <ion-item lines="none">
-      <a [routerLink]="['/buy-crypto']">
+      <a [routerLink]="['/sell-crypto']">
         <ion-icon name="arrow-back-outline"></ion-icon>
       </a>
-      <ion-label style="margin-left: 30%">
-        <p>Buy Crypto</p>
+      <ion-label style="margin-left: 40%">
+        <p>Sell</p>
       </ion-label>
     </ion-item>
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <p style="text-align: center;font-size: small;">Nel tuo portafoglio sono presenti</p>
   <div
     lines="none"
     style="
@@ -20,9 +21,11 @@
       justify-content: center;
     "
   >
-    <img [src]="crypto?.image.thumb" />
+    <img [src]="currentcrypto?.image" />
+
     <p style="margin-left: 2%">
-      1 {{ param | uppercase }} ≈ {{crypto?.market_data.current_price.usd}} $
+      {{currentcrypto?.valueinCrypto}} {{symbolCrypto}} ≈
+      {{currentcrypto?.value}} $
     </p>
   </div>
 
@@ -38,5 +41,5 @@
 </ion-content>
 
 <ion-toolbar style="padding-bottom: 5%; text-align: center">
-  <ion-button (click)="buyCrypto()" type="submit">BUY</ion-button>
+  <ion-button (click)="sellCrypto()" type="submit">SELL</ion-button>
 </ion-toolbar>

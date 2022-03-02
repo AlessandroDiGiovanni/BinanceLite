@@ -46,6 +46,10 @@ const routes: Routes = [
   {
     path: 'tutorial',
     loadChildren: () => import('./tutorial/tutorial.module').then( m => m.TutorialPageModule)
+  },
+  {
+    path: 'sell-crypto/sell/:symbol',
+    loadChildren: () => import('./sell/sell.module').then( m => m.SellPageModule)
   }
 ];
 @NgModule({

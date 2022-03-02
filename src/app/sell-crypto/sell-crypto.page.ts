@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CryptoValueService, RootObject } from '../providers/crypto-value.service';
+import {
+  CryptoValueService,
+  MyCripto,
+} from '../providers/crypto-value.service';
 
 @Component({
   selector: 'app-sell-crypto',
@@ -7,12 +10,7 @@ import { CryptoValueService, RootObject } from '../providers/crypto-value.servic
   styleUrls: ['./sell-crypto.page.scss'],
 })
 export class SellCryptoPage implements OnInit {
+  constructor(public api: CryptoValueService) {}
 
-  crypto: RootObject[];
-  constructor(public api: CryptoValueService) { }
-
-  async ngOnInit() {
-    const data: RootObject[] = (await this.api.getCrypto());
-    this.crypto = data;
-  }
+  async ngOnInit() {}
 }
