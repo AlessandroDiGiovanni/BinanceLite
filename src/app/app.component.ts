@@ -9,23 +9,19 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private storage: Storage, private router: Router, private menu :MenuController) {}
+  constructor(
+    private storage: Storage,
+    private router: Router,
+    private menu: MenuController
+  ) {}
 
-  openFirst() {
-    this.menu.enable(true, 'first');
-    this.menu.open('first');
-  }
-
-  openEnd() {
-    this.menu.open('end');
-  }
-
-  openCustom() {
-    this.menu.enable(true, 'custom');
-    this.menu.open('custom');
-  }
-  closeMenu(){
+  closeMenu() {
     this.menu.close('first');
+  }
+  async Logout() {
+    await this.storage.set('tutorial', false);
+    await this.storage.set('logged', false);
+    this.router.navigate(['/tutorial']);
   }
 
   async ngOnInit() {
@@ -34,6 +30,4 @@ export class AppComponent {
       (await this.storage.get('tutorial')) ? '/login' : '/tutorial',
     ]);
   }
-   
-   
 }

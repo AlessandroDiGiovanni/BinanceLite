@@ -11,7 +11,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <p style="text-align: center;font-size: small;">Nel tuo portafoglio sono presenti</p>
+  <p style="text-align: center;font-size: 80%;">There are these coins in your wallet</p>
   <div
     lines="none"
     style="
@@ -41,5 +41,5 @@
 </ion-content>
 
 <ion-toolbar style="padding-bottom: 5%; text-align: center">
-  <ion-button (click)="sellCrypto()" type="submit">SELL</ion-button>
+  <ion-button [disabled]="currentvalue<=0" (click)="sellCrypto()" type="submit">SELL</ion-button>
 </ion-toolbar>

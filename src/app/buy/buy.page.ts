@@ -62,12 +62,12 @@ export class BuyPage implements OnInit {
     const toast = await this.toastController.create({
       color: 'success',
       message:
-        "Hai effettuato l'acquisto di " +
+        'You have made the purchase of ' +
         this.api.Cryptos.find((item) => item.name == this.crypto.name)
           .valueinCrypto +
         ' ' +
         currentCrypto.name +
-        ' per un totale di ' +
+        ' for a total of ' +
         this.api.Cryptos.find((item) => item.name == this.crypto.name).value +
         ' $',
       duration: 2000,

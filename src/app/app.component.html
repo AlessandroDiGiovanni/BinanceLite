@@ -1,17 +1,30 @@
 <ion-app>
-  <ion-menu side="start" menuId="first" contentId="main" >
+  <ion-menu side="start" menuId="first" contentId="main">
     <ion-header>
       <ion-toolbar color="translucent">
-        <ion-title>Menu</ion-title>
+        <h2 slot="start" style="margin-left: 5%">Menu</h2>
+        <h2 slot="end" style="margin-right: 5%">
+          <ion-icon (click)="closeMenu()" name="close-sharp"></ion-icon>
+        </h2>
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-list>
-        <ion-item (click)="closeMenu()" [routerLink]="['/buy-crypto']">Compra Crypto</ion-item>
-        <ion-item (click)="closeMenu()" [routerLink]="['/sell-crypto']">Vendi Crypto</ion-item>
-        <ion-item (click)="closeMenu()" [routerLink]="['/tabs/tab3']">Il Tuo Portafoglio</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
+      <ion-list style="text-align: center">
+        <ion-item (click)="closeMenu()" [routerLink]="['/buy-crypto']"
+          >Buy Crypto</ion-item
+        >
+        <ion-item (click)="closeMenu()" [routerLink]="['/sell-crypto']"
+          >Sell Crypto</ion-item
+        >
+        <ion-item (click)="closeMenu()" [routerLink]="['/tabs/tab3']"
+          >Your Wallet</ion-item
+        >
+        <ion-item (click)="closeMenu()" [routerLink]="['/search']"
+          >Coin variations</ion-item
+        >
+        <ion-button color="warning" (click)="Logout()" (click)="closeMenu()"
+          >Logout</ion-button
+        >
       </ion-list>
     </ion-content>
   </ion-menu>

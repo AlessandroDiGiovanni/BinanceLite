@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 import {
@@ -26,6 +26,7 @@ export class SellPage implements OnInit {
     private route: ActivatedRoute,
     public api: CryptoValueService,
     public toastController: ToastController,
+    public router: Router
   ) {}
 
   async ngOnInit() {
@@ -62,37 +63,34 @@ export class SellPage implements OnInit {
       if (this.currentcrypto.value >= 0 ){ const toast = await this.toastController.create({
       color: 'danger',
       message:
-        'Hai effettuato la vendita di ' +
+        'You have made the sale of ' +
         this.currentvalue +
-        '$. Adesso hai ' +
+        '$. Now you have ' +
         this.currentcrypto.valueinCrypto +
         ' ' +
         this.currentcrypto.symbol,
-      duration: 2000,
+      duration: 3000,
     });
     toast.present();}
     else{
       const toast = await this.toastController.create({
         color: 'danger',
         message:
-          'Hai effettuato la vendita di ' +
+          'You have made the sale of' +
           this.currentvalue +
-          '$. Adesso hai 0' +
-           
+          '$. Now you have 0' +
           ' ' +
           this.currentcrypto.symbol,
-        duration: 2000,
+        duration: 3000,
       });
       toast.present();}
 
       if (this.currentcrypto.value <= 0) {
         this.api.Cryptos.splice(this.index,1);
+        this.router.navigate(['/sell-crypto']);
       }
     }
   }
-    /* if (this.currentcrypto.value <= 0) {
-      this.api.Cryptos.splice(this.index,this.index);
-    } */
-  
+   
   
 

@@ -2,13 +2,13 @@
   <ion-toolbar>
     <ion-item lines="none">
       <a [routerLink]="['/tabs/tab1']"><ion-icon name="arrow-back-outline"></ion-icon></a>
-      <ion-label style="margin-left: 13%">
-        <p>Scegli la Criptovaluta</p>
+      <ion-label style="margin-left: 10%">
+        <p>Choose your cryptocurrency</p>
       </ion-label>
     </ion-item>
     <ion-row>
       <ion-col>
-        <ion-searchbar [(ngModel)]="term" placeholder="Cerca"></ion-searchbar>
+        <ion-searchbar [(ngModel)]="term" placeholder="Search"></ion-searchbar>
       </ion-col>
     </ion-row>
   </ion-toolbar>
@@ -35,7 +35,7 @@
           [ngStyle]="{'color' : item.market_data.price_change_percentage_24h > 0 ? 'green' : 'red' }"
         >
           <span *ngIf="item.market_data.price_change_percentage_24h > 0">+</span
-          >{{item.market_data.price_change_percentage_24h}}
+          >{{item.market_data.price_change_percentage_24h}} %
         </h5>
       </ion-label>
     </ion-item>

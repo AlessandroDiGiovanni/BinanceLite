@@ -1,16 +1,16 @@
-<ion-header [translucent]="true">
+<ion-header >
   <ion-toolbar>
     <ion-item lines="none">
       <a [routerLink]="['/tabs/tab1']">
         <ion-icon name="arrow-back-outline"></ion-icon>
       </a>
       <ion-label style="margin-left: 13%">
-        <p>Scegli la Criptovaluta</p>
+        <p>Choose your cryptocurrency</p>
       </ion-label>
     </ion-item>
     <ion-row>
       <ion-col>
-        <ion-searchbar [(ngModel)]="term" placeholder="Cerca"></ion-searchbar>
+        <ion-searchbar [(ngModel)]="term" placeholder="Search"></ion-searchbar>
       </ion-col>
     </ion-row>
   </ion-toolbar>

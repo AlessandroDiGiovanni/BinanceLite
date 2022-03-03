@@ -1,15 +1,15 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-label style="text-align: center">
-      <p>Portafoglio</p>
+      <p>Your Wallet</p>
     </ion-label>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div style="display: flex; align-items: center">
-    <p style="font-size: x-small; margin-right: 1%; margin-left: 2%">
-      Saldo totale
+    <p style="font-size: small; margin-right: 1%; margin-left: 2%">
+      Total Balance
     </p>
     <a (click)="visibility =! visibility">
       <ion-icon
@@ -27,11 +27,11 @@
     <ng-template #pattern>
       <h1 style="margin: 0 2% 0 2%">*****</h1>
     </ng-template>
-    <ion-icon name="information-circle-outline"></ion-icon>
+   
   </div>
   <ion-card class="welcome-card">
     <ion-card-header>
-      <ion-card-subtitle>Assegnazione degli asset</ion-card-subtitle>
+      <ion-card-subtitle>Asset Assignment</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
       <canvas class="canvas" #doughnutCanvas></canvas>
