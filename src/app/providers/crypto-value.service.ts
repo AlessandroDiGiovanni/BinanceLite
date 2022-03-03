@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 export interface Image {
   thumb: string;
@@ -1123,6 +1124,6 @@ export class CryptoValueService {
 
   getCrypto = () =>
     this.httpClient
-      .get<RootObject[]>('https://api.coingecko.com/api/v3/coins')
+      .get<RootObject[]>(environment.host)
       .toPromise();
 }

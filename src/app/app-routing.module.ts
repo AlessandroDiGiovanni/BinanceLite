@@ -24,10 +24,6 @@ const routes: Routes = [
     loadChildren: () => import('./sell-crypto/sell-crypto.module').then(m => m.SellCryptoPageModule)
   },
   {
-    path: 'convert-crypto',
-    loadChildren: () => import('./convert-crypto/convert-crypto.module').then(m => m.ConvertCryptoPageModule)
-  },
-  {
     path: 'buy-crypto/buy/:symbol',
     loadChildren: () => import('./buy/buy.module').then(m => m.BuyPageModule)
   },

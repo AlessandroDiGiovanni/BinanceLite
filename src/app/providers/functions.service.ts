@@ -13,7 +13,7 @@ export class FunctionsService {
   async OpenModel() {
     this.presentModel = await this.modalCtrl.create({
       component: SheetModalPage,
-      initialBreakpoint: 0.4,
+      initialBreakpoint: 0.3,
       showBackdrop: true,
       mode: 'ios',
       cssClass: 'change-address-shipping-modal',

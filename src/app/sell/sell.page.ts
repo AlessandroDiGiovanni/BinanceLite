@@ -59,7 +59,7 @@ export class SellPage implements OnInit {
       this.api.Cryptos[this.index].value / this.market_dataUSD;
     
 
-    const toast = await this.toastController.create({
+      if (this.currentcrypto.value >= 0 ){ const toast = await this.toastController.create({
       color: 'danger',
       message:
         'Hai effettuato la vendita di ' +
@@ -70,11 +70,29 @@ export class SellPage implements OnInit {
         this.currentcrypto.symbol,
       duration: 2000,
     });
-    toast.present();
+    toast.present();}
+    else{
+      const toast = await this.toastController.create({
+        color: 'danger',
+        message:
+          'Hai effettuato la vendita di ' +
+          this.currentvalue +
+          '$. Adesso hai 0' +
+           
+          ' ' +
+          this.currentcrypto.symbol,
+        duration: 2000,
+      });
+      toast.present();}
 
-    if (this.currentcrypto.value <= 0) {
-      this.api.Cryptos.splice(this.index);
+      if (this.currentcrypto.value <= 0) {
+        this.api.Cryptos.splice(this.index,1);
+      }
     }
-  
   }
-}
+    /* if (this.currentcrypto.value <= 0) {
+      this.api.Cryptos.splice(this.index,this.index);
+    } */
+  
+  
+
