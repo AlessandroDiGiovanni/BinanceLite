@@ -1,6 +1,10 @@
 <ion-content *ngIf="check==true" class="background" [fullscreen]="true">
   <div *ngIf="activatelogin==false" class="authentication">
-    <h1>Registration</h1>
+    <ion-header>
+      <ion-toolbar>
+        <h3 style="text-align: center">Registration</h3>
+      </ion-toolbar>
+    </ion-header>
     <form [formGroup]="SignupForm" (ngSubmit)="SignUp()" novalidate>
       <ion-item lines="full">
         <ion-label position="floating">Name</ion-label>
@@ -29,18 +33,24 @@
 
       <ion-row>
         <ion-col>
-          <ion-button type="submit" color="danger" expand="block"
+          <ion-button type="submit" color="warning" expand="block"
             >Submit</ion-button
           >
         </ion-col>
       </ion-row>
     </form>
 
-    <p>Already registered? Please <a (click)="activatelogin=true">Log In</a></p>
+    <p style="margin-left: 4%">
+      Already registered? Please <a (click)="activatelogin=true">Log In</a>
+    </p>
   </div>
 
   <div *ngIf="activatelogin==true" class="authentication">
-    <h1>Login</h1>
+    <ion-header>
+      <ion-toolbar>
+        <h3 style="text-align: center">Login</h3>
+      </ion-toolbar>
+    </ion-header>
     <form [formGroup]="LoginForm" (ngSubmit)="Login()" novalidate>
       <ion-item lines="full">
         <ion-label position="floating">Email</ion-label>
@@ -57,13 +67,13 @@
 
       <ion-row>
         <ion-col>
-          <ion-button type="submit" color="danger" expand="block"
+          <ion-button type="submit" color="warning" expand="block"
             >Submit</ion-button
           >
         </ion-col>
       </ion-row>
     </form>
-    <p>
+    <p style="margin-left: 4%">
       Not registered yet? Please <a (click)="activatelogin=false">Sign Up</a>
     </p>
   </div>
