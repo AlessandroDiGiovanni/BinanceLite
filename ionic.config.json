@@ -1,5 +1,7 @@
 {
   "name": "BinanceLite",
-  "integrations": {},
-  "type": "angular"
+  "type": "angular",
+  "integrations": {
+    "cordova": {}
+  }
 }
