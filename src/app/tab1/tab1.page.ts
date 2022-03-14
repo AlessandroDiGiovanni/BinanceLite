@@ -33,21 +33,19 @@ export class Tab1Page implements OnInit {
   async doRefresh(event) {
     this.cryptoScroll = [];
     const data: RootObject[] = await this.api.getCrypto();
-    setTimeout(() => {
       this.crypto = data;
       this.cryptoScroll = this.crypto.slice(0, (this.limit = 10));
       event.target.complete();
-    }, 700);
   }
 
   loadData(event) {
-    setTimeout(() => {
+   
       this.limit = this.limit + 10;
       this.cryptoScroll = this.crypto.slice(0, this.limit);
       event.target.complete();
       if (this.cryptoScroll.length == this.crypto.length) {
         event.target.disabled = true;
       }
-    }, 700);
+
   }
 }
